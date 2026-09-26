@@ -9,13 +9,15 @@ html {
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     background: #050816;
     color: #ffffff;
     line-height: 1.6;
 }
 
-/* HEADER */
+/* =========================
+   HEADER
+========================= */
 
 header {
     position: sticky;
@@ -28,14 +30,16 @@ header {
 
     padding: 20px 8%;
 
-    background: rgba(5, 8, 22, 0.9);
+    background: rgba(5, 8, 22, 0.92);
+    backdrop-filter: blur(15px);
+
     border-bottom: 1px solid #1e293b;
 }
 
 header h1 {
     font-size: 28px;
+    letter-spacing: 3px;
     color: #00d9ff;
-    letter-spacing: 2px;
 }
 
 nav {
@@ -46,6 +50,8 @@ nav {
 nav a {
     color: #cbd5e1;
     text-decoration: none;
+    font-size: 15px;
+
     transition: 0.3s;
 }
 
@@ -53,7 +59,9 @@ nav a:hover {
     color: #00d9ff;
 }
 
-/* HERO */
+/* =========================
+   HERO
+========================= */
 
 #home {
     min-height: 90vh;
@@ -65,28 +73,137 @@ nav a:hover {
 
     padding: 100px 8%;
 
+    position: relative;
+    overflow: hidden;
+
     background:
-        radial-gradient(circle at top right, #123c56, transparent 40%),
-        radial-gradient(circle at bottom left, #172554, transparent 40%),
+        radial-gradient(
+            circle at 85% 20%,
+            rgba(0, 217, 255, 0.18),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 15% 80%,
+            rgba(37, 99, 235, 0.15),
+            transparent 35%
+        ),
         #050816;
 }
 
+#home::before {
+    content: "";
+
+    position: absolute;
+
+    width: 350px;
+    height: 350px;
+
+    border: 1px solid rgba(0, 217, 255, 0.12);
+
+    border-radius: 50%;
+
+    right: 8%;
+    top: 20%;
+
+    animation: float 6s ease-in-out infinite;
+}
+
+#home::after {
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    border: 1px solid rgba(0, 217, 255, 0.08);
+
+    border-radius: 50%;
+
+    right: 17%;
+    top: 30%;
+
+    animation: float 4s ease-in-out infinite reverse;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* HERO BADGE */
+
+.hero-badge {
+    display: inline-block;
+
+    padding: 8px 16px;
+    margin-bottom: 25px;
+
+    color: #00d9ff;
+
+    background: rgba(0, 217, 255, 0.08);
+
+    border: 1px solid rgba(0, 217, 255, 0.25);
+
+    border-radius: 30px;
+
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+
+/* HERO TITLE */
+
 #home h2 {
-    max-width: 800px;
+    position: relative;
+    z-index: 2;
+
+    max-width: 850px;
 
     font-size: clamp(45px, 7vw, 82px);
-    line-height: 1.05;
+
+    line-height: 1.03;
 
     margin-bottom: 25px;
 }
 
+#home h2 span {
+    color: #00d9ff;
+}
+
+/* HERO TEXT */
+
 #home p {
+    position: relative;
+    z-index: 2;
+
     max-width: 650px;
 
     color: #94a3b8;
+
     font-size: 20px;
 
     margin-bottom: 35px;
+}
+
+/* HERO BUTTONS */
+
+.hero-buttons {
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    gap: 15px;
+
+    flex-wrap: wrap;
 }
 
 #home a,
@@ -96,9 +213,11 @@ nav a:hover {
     padding: 14px 28px;
 
     background: #00d9ff;
+
     color: #001018;
 
     text-decoration: none;
+
     font-weight: bold;
 
     border-radius: 10px;
@@ -108,62 +227,141 @@ nav a:hover {
 
 #home a:hover,
 #contact a:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(0, 217, 255, 0.25);
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 10px 30px rgba(0, 217, 255, 0.25);
 }
 
-/* SERVICES */
+/* SECONDARY BUTTON */
+
+.secondary-btn {
+    background: transparent !important;
+
+    color: #ffffff !important;
+
+    border: 1px solid #334155;
+}
+
+.secondary-btn:hover {
+    border-color: #00d9ff;
+
+    background: rgba(0, 217, 255, 0.05) !important;
+}
+
+/* HERO STATS */
+
+.hero-stats {
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+
+    gap: 60px;
+
+    margin-top: 70px;
+}
+
+.hero-stats div {
+    display: flex;
+    flex-direction: column;
+}
+
+.hero-stats strong {
+    font-size: 30px;
+
+    color: #00d9ff;
+}
+
+.hero-stats span {
+    color: #64748b;
+
+    font-size: 13px;
+}
+
+/* =========================
+   SERVICES
+========================= */
 
 #services {
-    padding: 100px 8%;
+    padding: 110px 8%;
+
     text-align: center;
+
+    background: #070b16;
 }
 
 #services > h2,
 #about h2,
 #contact h2 {
     font-size: 42px;
-    margin-bottom: 45px;
+
+    margin-bottom: 50px;
 }
+
+/* SERVICE CARD */
 
 #services div {
     display: inline-block;
+
     vertical-align: top;
 
     width: 29%;
+
     min-width: 250px;
+
+    min-height: 230px;
 
     margin: 1%;
 
     padding: 35px;
 
-    background: #0f172a;
+    text-align: left;
+
+    background:
+        linear-gradient(
+            145deg,
+            #111827,
+            #0b1120
+        );
+
     border: 1px solid #1e293b;
 
     border-radius: 18px;
 
-    transition: 0.3s;
+    transition: 0.35s;
 }
 
 #services div:hover {
-    transform: translateY(-8px);
+    transform: translateY(-10px);
+
     border-color: #00d9ff;
+
+    box-shadow:
+        0 20px 50px rgba(0, 217, 255, 0.08);
 }
 
 #services h3 {
     color: #00d9ff;
+
     font-size: 22px;
+
     margin-bottom: 15px;
 }
 
 #services p {
     color: #94a3b8;
+
+    font-size: 15px;
 }
 
-/* ABOUT */
+/* =========================
+   ABOUT
+========================= */
 
 #about {
     padding: 110px 8%;
+
     text-align: center;
 
     background: #0b1120;
@@ -175,14 +373,26 @@ nav a:hover {
     margin: auto;
 
     color: #94a3b8;
+
     font-size: 18px;
 }
 
-/* CONTACT */
+/* =========================
+   CONTACT
+========================= */
 
 #contact {
-    padding: 110px 8%;
+    padding: 120px 8%;
+
     text-align: center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(0, 217, 255, 0.08),
+            transparent 45%
+        ),
+        #050816;
 }
 
 #contact h2 {
@@ -191,10 +401,15 @@ nav a:hover {
 
 #contact p {
     color: #94a3b8;
+
     margin-bottom: 30px;
+
+    font-size: 18px;
 }
 
-/* FOOTER */
+/* =========================
+   FOOTER
+========================= */
 
 footer {
     padding: 30px;
@@ -208,23 +423,31 @@ footer {
     border-top: 1px solid #1e293b;
 }
 
-/* MOBILE */
+/* =========================
+   MOBILE
+========================= */
 
 @media (max-width: 768px) {
 
     header {
+        padding: 18px 6%;
+
         flex-direction: column;
+
         gap: 15px;
     }
 
     nav {
         gap: 12px;
+
         flex-wrap: wrap;
+
         justify-content: center;
     }
 
     #home {
-        min-height: 80vh;
+        min-height: 85vh;
+
         padding: 80px 7%;
     }
 
@@ -236,9 +459,27 @@ footer {
         font-size: 17px;
     }
 
+    .hero-stats {
+        gap: 25px;
+
+        margin-top: 50px;
+    }
+
+    .hero-stats strong {
+        font-size: 23px;
+    }
+
+    #services {
+        padding: 80px 7%;
+    }
+
     #services div {
         display: block;
+
         width: 100%;
+
+        min-width: 0;
+
         margin: 20px 0;
     }
 
@@ -246,5 +487,57 @@ footer {
     #about h2,
     #contact h2 {
         font-size: 34px;
+    }
+
+    #about,
+    #contact {
+        padding: 90px 7%;
+    }
+}
+
+/* =========================
+   SMALL PHONES
+========================= */
+
+@media (max-width: 480px) {
+
+    header h1 {
+        font-size: 24px;
+    }
+
+    nav a {
+        font-size: 13px;
+    }
+
+    #home h2 {
+        font-size: 40px;
+    }
+
+    #home p {
+        font-size: 16px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+
+        width: 100%;
+    }
+
+    .hero-buttons a {
+        text-align: center;
+
+        width: 100%;
+    }
+
+    .hero-stats {
+        gap: 18px;
+    }
+
+    .hero-stats strong {
+        font-size: 20px;
+    }
+
+    .hero-stats span {
+        font-size: 11px;
     }
 }
